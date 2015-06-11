@@ -1,0 +1,17 @@
+<div id='container'>
+	<h1>Log Engine</h1>
+
+	<%= form_for @log, url: :Logpage_index do |f| %>
+	Path: <%= f.text_field :path, :value => @path||nil %>
+		  <%= f.submit :ready %>
+	<% end %>
+	<br>
+	<%= form_tag "/path_locations" do %>
+	  Regular Expression : <%= text_field_tag "regular_expression" %>
+	  <%= submit_tag "Fetch" %>
+	<% end %>
+
+	<textarea rows="50" cols="60" id='display_content'>
+	<%=  @display %>
+	</div>
+</div>

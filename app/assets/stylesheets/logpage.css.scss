@@ -1,0 +1,22 @@
+// Place all the styles related to the logpage controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+#display_content{
+  width: 30%;
+  height: 400px;
+  padding: 1%;
+  border: 2px solid grey ;
+  margin: 5%;
+  overflow: auto;
+  box-shadow: 10px 10px 5px #888888;
+}
+
+#container{
+width: 150%;
+  padding: 1%;
+  margin: 5%;
+}
+textarea {
+   font-size: 15pt;
+   font-family: Arial;
+} 
