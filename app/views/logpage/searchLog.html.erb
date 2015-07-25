@@ -1,17 +1,37 @@
 <div id='container'>
 	<h1>Log Engine</h1>
 
-	<%= form_for @log, url: :Logpage_index do |f| %>
-	Path: <%= f.text_field :path, :value => @path||nil %>
+	<%= form_for @log_path, url: :Logpage_index do |f| %>
+	<b>ICP Path: <%= f.text_field :icp_path, :value => @icp_path || nil %>
+	MNS Path: <%= f.text_field :mns_path, :value => @mns_path || nil %>
+	THIRD PARTY Path: <%= f.text_field :third_party_path, :value => @third_party_path || nil %>
 		  <%= f.submit :ready %>
 	<% end %>
 	<br>
-	<%= form_tag "/path_locations" do %>
-	  Regular Expression : <%= text_field_tag "regular_expression" %>
+<!-- 	<%= form_tag "/path_locations" do %>
+	  AP Input File Path : <%= text_field_tag "ap_file_path" %></b>
 	  <%= submit_tag "Fetch" %>
+	<% end %> -->
+
+	<%= form_for @log_path , url: :plumApResponse do |f| %>
+		AP InputFilePath: <%= f.text_field :ap_file_path, :value => @ap_file_path || nil%>
+		ReferenceId: <%= f.text_field :ref_id, :value => @ref_id||nil %>
+		<%= f.submit :GetIt %>
 	<% end %>
 
-	<textarea rows="50" cols="60" id='display_content'>
+	<textarea rows="30" cols="40" class='display_content'>
 	<%=  @display %>
+	</textarea>
+
+	<textarea rows="30" cols="40" class='display_content'>
+	<%=  @display %>
+	</textarea>
+
+	<textarea rows="30" cols="40" class='display_content'>
+	<%= @proxy_data.html_safe unless @proxy_data.nil?%>
+	</textarea>
+
 	</div>
+
+	
 </div>

@@ -11,13 +11,46 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150725070314) do
+ActiveRecord::Schema.define(:version => 20150725071417) do
 
   create_table "path_locations", :force => true do |t|
     t.string   "path"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  create_table "pcas", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "icp_path"
+    t.string   "mns_path"
+    t.string   "third_party_path"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "pcas", ["user_id"], :name => "index_pcas_on_user_id"
+
+  create_table "plums", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "icp_path"
+    t.string   "mns_path"
+    t.string   "third_party_path"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "plums", ["user_id"], :name => "index_plums_on_user_id"
+
+  create_table "sapphires", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "icp_path"
+    t.string   "mns_path"
+    t.string   "third_party_path"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "sapphires", ["user_id"], :name => "index_sapphires_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

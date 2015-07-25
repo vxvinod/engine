@@ -33,6 +33,8 @@ Logengine::Application.routes.draw do
 
   resources :Logpage
   resources :path_locations
+  match 'plum_apResponse' => 'Logpage#apResponse', :as => :plumApResponse
+  #match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # Sample resource route with more complex sub-resources
   #   resources :products do
   #     resources :comments
@@ -52,6 +54,7 @@ Logengine::Application.routes.draw do
   # just remember to delete public/index.html.
   # root :to => 'welcome#index'
   root :to => 'Logpage#searchLog'
+
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.
