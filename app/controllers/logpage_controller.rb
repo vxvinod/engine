@@ -27,6 +27,8 @@ include LogpageHelper
 		@icp_path, @mns_path, @third_party_path = path.icp_path, path.mns_path, path.third_party_path
 		#message_id = fetch_message_id_from_ap(@ap_file_path)
 		@proxy_data = fetch_ap_response_proxy_data(path.third_party_path, @ap_file_path)
+		@icp_data   = fetch_ce_data(@icp_path, @ref_id)
+		@mns_data 	= fetch_mns_data(@mns_path, @ref_id)
 		render template: "logpage/searchLog.html"
 	end
 end

@@ -51,4 +51,35 @@ module LogpageHelper
     proxyData = print.write(out,2)
     return proxyLogData 
 	end
+
+	def fetch_ce_data (ceLog, referenceIdValue)
+			apStatus = "AP_STATUS_VALID"
+      ceMatchData = nil
+      ceFetchRegex  = /autoprogramReferenceId:\s#{referenceIdValue}(.*?)I\/PlumSocketReader(.*?)autoprogramStatus:\s#{apStatus}(.*?)tag/m
+      ceFileData     = File.read(ceLog)        
+      ceData = ceFileData.match(ceFetchRegex).to_s.split('eventMessageHeaderSig').reverse
+         ceData.each do |data|
+            if data=~ceFetchRegex
+               ceMatchData = data.match(ceFetchRegex) 
+               break
+            end
+         end         
+    
+      ceMatchData.to_s
+   end
+
+   def fetch_mns_data(mnsLog, refId)
+   	apStatus = "AP_STATUS_VALID"
+   	mnsFetchData = nil
+   	mnsFetchRegex = /cmdType:\sAUTO_PROGRAM(.*?)tag(.*?)referenceId:\s#{refId}(.*?)autoProgramStatus:\s#{apStatus}(.*?)tag/m
+   	mnsFileData = File.read(mnsLog)
+   	mnsData = mnsFileData.match(mnsFetchRegex).to_s.split('cmdResponse').reverse
+   		mnsData.each do |data|
+   			unless (data=~mnsFetchRegex).nil?
+   				mnsFetchData = data.match(mnsFetchRegex).to_s
+   				break
+   			end
+   		end
+   		mnsFetchData
+   end
 end
