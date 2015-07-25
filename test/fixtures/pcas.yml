@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  user: 
+  icp_path: MyString
+  mns_path: MyString
+  third_party_path: MyString
+
+two:
+  user: 
+  icp_path: MyString
+  mns_path: MyString
+  third_party_path: MyString
