@@ -1,29 +1,76 @@
-<h2>Sign up</h2>
+<div  class="panel">
+            
+                        <span>
+                        <a href="#" id="Login"  class="links" >LOGIN</a>
+                        <b style="font-size:x-large; padding-top:10px;padding-left:5px;  float:left">Log Engine</b>
+                        </span>
+            </div>
 
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+                        <center> 
+                        <img class="logo" src="/assets/hospira.jpg" alt="Hospira" width="120" height="120">
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "off" %>
-  </div>
-
-  <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "off" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "Sign up" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+                        <div class="Register-page">
+                        <h2>User Registeration</h2>
+                        <img src="/assets/register.png" alt="USer-Login">
+                        <!-- <form action="" method="post" > -->
+                        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                        <%= devise_error_messages! %>
+                        <table style="width:90%;" align="center">
+                        <tr>
+                        <td>
+                        <label>E-mail:</label>
+                        </td>
+                        <td>
+                       <!--  <input type="email" pattern="*" border="0" > -->
+                       <%= f.email_field :email, autofocus: true %>
+                        </td>
+                        
+                        </tr>
+                        <tr>
+                          <td>
+                            <br/>
+                            <label>Password:</label>
+                          </td>
+                          <td>
+                            <br/>
+                            <!-- <input type="text" accept="text/plain" border="0" > -->
+                            <%= f.password_field :password, autocomplete: "off" %>
+                            <% if @minimum_password_length %>
+                            <em>(<%= @minimum_password_length %> characters minimum)</em>
+                            <% end %><br />
+                            
+                          </td>
+                        
+                        </tr>
+                        <tr>
+                        <td>
+                        <label>Retype-Password:</label>
+                        </td>
+                        <td>
+                        <!-- <input type="password" pattern="*" border="0" > -->
+                        <%= f.password_field :password_confirmation, autocomplete: "off" %>
+                        </td>
+                        
+                        </tr>
+                        
+                        
+                        <tr>
+                        <td>
+                        
+                        </td>
+                        <td>
+                        <br/>
+                        &nbsp;
+                        <input style="width:45%" type="submit" name="Register"  value="Register">
+                        &nbsp;&nbsp;&nbsp;
+                        <input type="reset" style="width:45%" name="Clear" value="Clear">
+                        </td>
+                        
+                        </tr>
+                        
+                        </table>
+                       <!--  </form> -->
+                       <% end %>
+                        </div>
+                        </center>
+                        <div align="center" class="footer-panel"></div>

@@ -598,13 +598,13 @@ select
 .Register-page
 {
 	height:auto;
-	display:none;
 	min-height:500px;
 	max-height:auto;
 }
 .logo
 {
 	margin-top:2%;
+	border-radius:12px;
 }
 input
 {
