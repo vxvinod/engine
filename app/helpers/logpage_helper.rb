@@ -74,14 +74,12 @@ module LogpageHelper
    	mnsFetchRegex = /cmdType:\sAUTO_PROGRAM(.*?)referenceId:\s#{refId.to_i}(.*?)autoProgramStatus:\s#{apStatus}(.*?)tag(.*?)referenceId:\s#{refId.to_i}(.*?)autoProgramStatus:\s#{apStatus}(.*?)tag/m
    	mnsFileData = File.read(mnsLog)
    	mnsData = mnsFileData.match(mnsFetchRegex).to_s.split('cmdResponse').reverse
-    debugger
    		mnsData.each do |data|
    			unless (data=~mnsFetchRegex).nil?
    				mnsFetchData = data.match(mnsFetchRegex).to_s
    				break
    			end
    		end
-      debugger
    		mnsFetchData
    end
 end

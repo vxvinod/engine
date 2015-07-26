@@ -8,6 +8,7 @@ gem 'rails', '3.2.21'
 gem 'sqlite3'
 gem 'debugger'
 gem 'nokogiri'
+gem 'devise'
 #gem 'activerecord-sqlserver-adapter', :git => "git://github.com/rails-sqlserver/activerecord-sqlserver-adapter.git", :branch => "3-2-stable" 
 gem 'tiny_tds'
 gem 'activerecord-sqlserver-adapter'

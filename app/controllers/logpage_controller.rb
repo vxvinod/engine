@@ -1,5 +1,8 @@
 class LogpageController < ApplicationController
 include LogpageHelper
+
+	#before_filter :authenticate_user!
+
 	def searchLog
 		@log_path = Plum.new
 		#@display = File.readlines('C:\Users\60010743\Desktop\proxy.log').each{|line| line}
@@ -15,7 +18,6 @@ include LogpageHelper
 						third_party_path: params[:plum][:third_party_path])
 		else
 			@log_path = Plum.new(params[:plum])
-			#debugger
 			@log_path.save
 		end
 		
@@ -23,7 +25,7 @@ include LogpageHelper
 		@mns_path = params[:plum][:mns_path]
 		@third_party_path = params[:plum][:third_party_path]
 		#@display = File.readlines(@path).each{|line| line}
-		@display = format_full_log(@icp_path)#.gsub(/\n/, '<br />')
+		#@display = format_full_log(@icp_path)#.gsub(/\n/, '<br />')
 
 		render template: "logpage/searchLog.html"
 	end
@@ -42,4 +44,16 @@ include LogpageHelper
 		
 		render template: "logpage/searchLog.html"
 	end
+
+	# def authenticate_user!
+
+	# end
+
+  # def authenticate_user!
+  # 	unless user_signed_in?
+  # 		redirect_to new_user_session_path
+  # 	else
+  # 		redirect_to root_path
+  # 	end
+  # end
 end
