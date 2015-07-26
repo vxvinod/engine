@@ -146,21 +146,11 @@ jQuery('#hdp-button').click(function() {
                         <span style="align-content:center">
                         <b style="font-size:x-large; margin-top:10px;">Log Engine</b>
                         </span>
-
-                        	<% if user_signed_in? %>
-                        	<%= link_to "Sign out", destroy_user_session_path, :method => :delete, :class => "logout" %>
-                        	<span class="userdes">Signed in as <b style="color:#F85400" id="username"><%=current_user.email %></b> </span>
-								
-								
-							<% else %>
-								<%=link_to "Sign up",new_user_registration_path, :class => "logout" %> 
-								<%=link_to "Sign in", new_user_session_path, :class => "logout" %>
-							<% end %>
-                        <!-- <a href="#" class="logout">LogOut</a> -->
+                        <a href="#" class="logout">LogOut</a>
                         <a href="#" class="links" >RegEx</a>
                        	<a href="#" class="links">GitHub</a>
                         <a href="#" class="links" >Tutorial</a>
-                       
+                        <span class="userdes">Signed in as <b style="color:#F85400" id="username">Sample</b> </span>
                         
 						</div>
                         
@@ -176,7 +166,6 @@ jQuery('#hdp-button').click(function() {
 								  <div align="center" class="input-halfwidth" >
                                   <div  class="panel-area">INFUSER CONTROL PROTOCOL</div>
                                   <div  id="ICP" class="back-yellow" >
-                                  	<%=  @icp_data %>
                                   </div>
                                   <span class="button-arrow small pop1-icp" id="hdp-button" data-bpopup='{"fadeSpeed":"slow", "followSpeed":"slow", "modalColor":"black"}'>EXPAND</span>
                                   </div>
@@ -184,17 +173,13 @@ jQuery('#hdp-button').click(function() {
                                   <div class="req-res"><img src="/assets/reqres.gif" ></div></center>
 								  <div align="center" class="input-halfwidth" >
                                   <div  class="panel-area">HOSPIRA DEVICE PROTOCOL</div>
-                                  <div id="HDP" class="back-yellow" >
-                                  	<%=  @mns_data %>
-                                  </div>
+                                  <div id="HDP" class="back-yellow" ></div>
 								  <span class="button-arrow small pop1-hdp" data-bpopup='{"fadeSpeed":"slow", "followSpeed":"slow", "modalColor":"black"}'>EXPAND</span>
                                   </div><center>
                                   <div class="req-res"><img src="/assets/reqres.gif" ></div></center>
 								  <div  align="center" class="input-halfwidth" >
                                   <div class="panel-area">CLINICAL INTERFACE</div>
-                                  <div id="CLINICAL INTERFACE" class="back-yellow" >
-                                  	<%= @proxy_data unless @proxy_data.nil?%>
-                                  </div>
+                                  <div id="CLINICAL INTERFACE" class="back-yellow" ></div>
                                   <span class="button-arrow small pop1-ci" data-bpopup='{"fadeSpeed":"slow", "followSpeed":"slow", "modalColor":"black"}'>EXPAND</span>
                                 </div>
                                 <br/><br/>
@@ -214,17 +199,15 @@ jQuery('#hdp-button').click(function() {
         <div align="center" id="popup">
         <span  class="button b-close"><span>X</span></span>
         <h4>Browse the Files<h4/>
-        <!-- <form action="" method="post"> -->
-        <%= form_for @log_path, url: :Logpage_index do |f| %>
+        <form action="" method="post">
         <table width="100%">
 			<tr>
             <td width="120">
-            <b>ICP PATH</b>
+            <b>AP RESPONSE</b>
             </td>
             <td>
         	<input type="file" id="browse1" name="fileupload" style="display: none"/>
-			<!-- <input type="text" style="background:#00BBCB" id="filename1" /> -->
-			<%= f.text_field :icp_path, :value => @icp_path || nil, id: "filename1", style: "background:#00BBCB"  %>
+			<input type="text" style="background:#00BBCB" id="filename1" />
             </td>
 			<td>
             <input type="button" value="Browse" id="ApResponse" onclick="HandleBrowseClick1();"/>
@@ -235,12 +218,11 @@ jQuery('#hdp-button').click(function() {
             </tr>
             <tr>
             <td>
-            <b>HDP PATH</b>
+            <b>AD STATUS</b>
             </td>
             <td>
         	<input type="file" id="browse2" name="fileupload" style="display: none"/>
-			<!-- <input type="text" id="filename2"  style="background:#00BBCB"  /> -->
-			<%= f.text_field :mns_path, :value => @mns_path || nil, id: "filename2", style: "background:#00BBCB"  %>
+			<input type="text" id="filename2"  style="background:#00BBCB"  />
             </td>
 			<td>
             <input type="button" value="Browse" id="ApStatus" onclick="HandleBrowseClick2();"/>
@@ -251,12 +233,11 @@ jQuery('#hdp-button').click(function() {
             </tr>
             <tr>
             <td>
-            <b>CI PATH</b>
+            <b>AD EVENTS</b>
             </td>
             <td>
         	<input type="file" id="browse3" name="fileupload" style="display: none"/>
-			<!-- <input type="text" id="filename3" style="background:#00BBCB"  /> -->
-			<%= f.text_field :third_party_path, :value => @third_party_path || nil, id: "filename3", style: "background:#00BBCB"  %>	
+			<input type="text" id="filename3" style="background:#00BBCB"  />
             </td>
 			<td>
             <input type="button" value="Browse" id="AdEvents" onclick="HandleBrowseClick3();"/>
@@ -273,20 +254,18 @@ jQuery('#hdp-button').click(function() {
         	</td>
 			<td>
 				<br/>
-				<!-- <input type="submit" value="Submit"> -->
-            	<%= f.submit :Submit, style: "background:#6789F5"%>
+				<input type="submit" value="Submit">
+            
             </td>
             <td>
             </td>
             </tr>
             </table>
 
-            <!-- </form> -->
-            <% end %>
+            </form>
             <br/>
             <br/>
-            <!-- <form action="" method="post"> -->
-            <%= form_for @log_path , url: :plumApResponse do |f| %>
+            <form action="" method="post">
             	<table width="100%">
             	<tr>
             <td>
@@ -294,8 +273,7 @@ jQuery('#hdp-button').click(function() {
             </td>
             <td>
         	<input type="file" id="browse4" name="fileupload" style="display: none"/>
-			<!-- <input type="text" id="filename4" style="background:#00BBCB"  /> -->
-			<%= f.text_field :ap_file_path, :value => @ap_file_path || nil, id:"filename4",style: "background:#00BBCB"  %>
+			<input type="text" id="filename4" style="background:#00BBCB"  />
             </td>
 			<td>
             <input type="button" value="Browse" id="AdEvents" onclick="HandleBrowseClick4();"/>
@@ -309,8 +287,7 @@ jQuery('#hdp-button').click(function() {
             <b>AP STATUS</b>
             </td>
             <td>
-             <!-- <input type="text" style="background:#9BBFEB" id="ApStatus"  name="ApStatus" /> -->
-             <%= f.text_field :ref_id, :value => @ref_id||nil, id: "ApStatus", style: "background:#00BBCB"  %>
+             <input type="text" style="background:#9BBFEB" id="ApStatus"  name="ApStatus" />
 			</td>
 
             </tr>
@@ -319,15 +296,13 @@ jQuery('#hdp-button').click(function() {
             <td>
             <br/>
             </td>
-            <td><br/><!-- <input type="submit" style="background:#6789F5"  value="Save" name="Save" /> -->
-            	<%= f.submit :GetIt, style:"background:#6789F5"  %></td>
+            <td><br/><input type="submit" style="background:#6789F5"  value="Save" name="Save" /></td>
             <td><br/>
             	<input type="button" style="background:#6789F5" class="b-close" value="Cancel"  />
             </td>
             </tr>
         </table>
-            <!-- </form> -->
-            <% end %>
+            </form>
     </div>
 
     
@@ -335,9 +310,7 @@ jQuery('#hdp-button').click(function() {
 <div  style="display:none" align="center" id="popup-icp">
         <span  class="button b-close"><span>X</span></span>
         <div  class="panel-area">INFUSER CONTROL PROTOCOL</div>
-<div  id="ICP-modal" class="back-yellow" >
-	<%=  @icp_data %>
-	</div>
+<div  id="ICP-modal" class="back-yellow" ></div>
             
     </div>
 
@@ -346,9 +319,7 @@ jQuery('#hdp-button').click(function() {
 <div align="center"  style="display:none" id="popup-hdp">
         <span  class="button b-close"><span>X</span></span>
         <div  class="panel-area">HOSPIRA DEVICE PROTOCOL</div>
-	<div  id="HDP-modal" class="back-yellow" >
-		<%=  @mns_data %>
-	</div>
+	<div  id="HDP-modal" class="back-yellow" ></div>
             
     </div> 
        
@@ -356,9 +327,7 @@ jQuery('#hdp-button').click(function() {
 <div align="center"  style="display:none" id="popup-ci">
         <span  class="button b-close"><span>X</span></span>
         <div class="panel-area">CLINICAL INTERFACE</div>
-	<div  id="CI-modal" class="back-yellow" >
-		<%= @proxy_data unless @proxy_data.nil?%>
-	</div>
+	<div  id="CI-modal" class="back-yellow" ></div>
             
     </div>    
 
