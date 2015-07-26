@@ -7,12 +7,21 @@ include LogpageHelper
 
 	def create
 		params[:plum].merge!({:user_id => 1})
-		@log_path = Plum.new(params[:plum])
-		#debugger
-		@log_path.save
+		@log_path = Plum.new
+		if Plum.exists?(:user_id => 1)
+			path = Plum.find_by_user_id(1)
+			path.update_attributes(icp_path: params[:plum][:icp_path],
+						mns_path: params[:plum][:mns_path],
+						third_party_path: params[:plum][:third_party_path])
+		else
+			@log_path = Plum.new(params[:plum])
+			#debugger
+			@log_path.save
+		end
+		
 		@icp_path = params[:plum][:icp_path]
 		@mns_path = params[:plum][:mns_path]
-		@third_path = params[:plum][:third_party_path]
+		@third_party_path = params[:plum][:third_party_path]
 		#@display = File.readlines(@path).each{|line| line}
 		@display = format_full_log(@icp_path)#.gsub(/\n/, '<br />')
 
