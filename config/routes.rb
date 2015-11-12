@@ -36,6 +36,7 @@ Logengine::Application.routes.draw do
   resources :Logpage
   resources :path_locations
   match 'plum_apResponse' => 'Logpage#apResponse', :as => :plumApResponse
+  match 'plumApRequestResponse' => 'Logpage#apProfile', :as => :plumApRequestResponse
   #match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
   # Sample resource route with more complex sub-resources
   #   resources :products do

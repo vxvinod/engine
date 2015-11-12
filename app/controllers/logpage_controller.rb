@@ -5,6 +5,7 @@ include LogpageHelper
 
 	def searchLog
 		@log_path = Plum.new
+		#debugger
 		#@display = File.readlines('C:\Users\60010743\Desktop\proxy.log').each{|line| line}
 		path = Plum.find_by_user_id(1)
 		@icp_path = path.icp_path
@@ -35,6 +36,7 @@ include LogpageHelper
 	end
 
 	def apResponse
+		debugger
 		@log_path = Plum.new
 		@ap_file_path = params[:plum][:ap_file_path]
 		#@ref_id = params[:plum][:ref_id]
@@ -47,6 +49,38 @@ include LogpageHelper
 		@mns_data 	= fetch_mns_data(@mns_path, @ref_id)
 		
 		render template: "logpage/searchLog.html"
+	end
+
+	def apProfile
+		@log_path = Plum.new
+		debugger
+		#params = response
+		@logValues =[]
+		#params['ref_id'] = Hmss.reference_id_for_ap_request(params['message_id']) unless (params['message_id'].nil?)
+		
+		
+		profile = params['profile']
+    	pparams = get_interface_path(params)
+    	pparams['ref_id'] = 16
+		case profile
+		when 'auto-programming'
+			@logValues = ap_auto_programming(params)
+		when 'auto-documentation'
+			@logValues = ap_auto_documentation(params)
+		when 'alarm-forwarding'
+			@logValues = ap_alarm_forwarding(params)
+		when 'patient-assignment'
+			@logValues = ap_patient_assignment(params)
+		else
+
+		end
+	
+	end
+
+
+
+	def ap_auto_documentation
+
 	end
 
 	# def authenticate_user!

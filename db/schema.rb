@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20150726104237) do
+ActiveRecord::Schema.define(:version => 20151003124320) do
 
   create_table "path_locations", :force => true do |t|
     t.string   "path"
@@ -37,6 +37,7 @@ ActiveRecord::Schema.define(:version => 20150726104237) do
     t.string   "third_party_path"
     t.datetime "created_at",       :null => false
     t.datetime "updated_at",       :null => false
+    t.string   "simulator_path"
   end
 
   add_index "plums", ["user_id"], :name => "index_plums_on_user_id"
