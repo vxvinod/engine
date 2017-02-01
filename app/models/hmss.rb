@@ -5,7 +5,7 @@ class Hmss < ActiveRecord::Base
   	:host	 => "localhost",
   	:username =>"sa",
   	:password => "Hospira1",
-  	:database => "HMSS_61"
+  	:database => "HMSS_62"
   	)
   self.table_name = 'dbo.InfusionOrder'
   self.primary_key = 'no'
